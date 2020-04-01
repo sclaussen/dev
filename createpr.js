@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-
 'use strict';
 
 var d = require('debug')('createpr');
@@ -24,15 +23,16 @@ process.on('unhandledRejection', function(reason, p) {
 // Requires:
 // 1. Create a github personal access token and set it in the environment GIT_TOKEN=username:GIT_PERSONAL_ACCESS_TOKEN
 // 2. Must be in the repo and branch with pushed commits
-run(process.argv);
+main(process.argv);
 
-async function run(argv) {
+
+async function main(argv) {
 
     let repository = shelljs.exec('git remote -v | grep "(push)" | cut -d"/" -f2 | cut -d"." -f1', { silent: true }).stdout;
     let branch = shelljs.exec('git rev-parse --abbrev-ref HEAD', { silent: true }).stdout;
     let title = shelljs.exec('git log --pretty=format:"%s" -n1', { silent: true }).stdout;
 
-    let pullRequest = await post('https://github.com/api/v3/repos/velox/' + repository + '/pulls', process.env.GIT_TOKEN, {
+    let pullRequest = await post(process.env.GIT_ORG + '/' + repository + '/pulls', process.env.GIT_TOKEN, {
         title: title,
         head: branch,
         base: 'master'

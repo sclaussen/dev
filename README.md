@@ -25,7 +25,7 @@ function gm() { echo "git pull --rebase --prune && git merge --squash --ff-only 
   1. `gc COMMIT_MESSAGE` (git add . && git commit -m COMMIT_MESSAGE)
   1. `gprb` (git fetch && git rebase origin/master)
   1. `gp` (git push origin BRANCH_NAME)
-  1. `cpr` (create a PR request using $VELOX/apim-ci/cpr.js) [NOTE: Not included here]
+  1. `createpr` (create a PR request)
   1. `gcom` (git checkout -b master)
 
 - What I do if a subsequent rebase is required for the branch/PR:
@@ -45,7 +45,7 @@ function gm() { echo "git pull --rebase --prune && git merge --squash --ff-only 
   1. Resolve merge conflict [NOTE: New Step]
   1. `grc` [NOTE: New Step]
   1. `gp` (git push origin BRANCH_NAME)
-  1. `cpr` (create a PR request using $VELOX/apim-ci/cpr.js) [NOTE: Not included here]
+  1. `createpr` (create a PR request)
   1. `gcom` (git checkout -b master)
 
 - Merging locally into master:
@@ -70,3 +70,7 @@ function gm() { echo "git pull --rebase --prune && git merge --squash --ff-only 
   1. Resolve merge conflict
   1. `grc`
   1. `gp` (git push origin master)
+
+
+NOTE: The createpr command will require the GIT_ORG and GIT_TOKEN
+environment variables and a few node packages to be installed.
