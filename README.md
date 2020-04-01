@@ -43,7 +43,7 @@ function gm() { echo "git pull --rebase --prune && git merge --squash --ff-only 
   1. `gc COMMIT_MESSAGE` (git add . && git commit -m COMMIT_MESSAGE)
   1. `gprb` (git fetch && git rebase origin/master)
   1. Resolve merge conflict [NOTE: New Step]
-  1. `grc` [NOTE: New Step]
+  1. `grc` (git add . && git rebase --continue) [NOTE: New Step]
   1. `gp` (git push origin BRANCH_NAME)
   1. `createpr` (create a PR request)
   1. `gcom` (git checkout -b master)
@@ -68,7 +68,7 @@ function gm() { echo "git pull --rebase --prune && git merge --squash --ff-only 
   1. Make changes & test
   1. `gpr` (git pull --rebase --prune)
   1. Resolve merge conflict
-  1. `grc`
+  1. `grc` (git add . && git rebase --continue)
   1. `gp` (git push origin master)
 
 
