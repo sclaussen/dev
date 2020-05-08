@@ -60,12 +60,14 @@ function gm() { echo "git pull --rebase --prune && git merge --squash --ff-only 
 - My typical development flow on a repo w/out PRs (on master):
   1. `cd REPOSITORY`
   1. Make changes & test
+  1. `gc COMMIT_MESSAGE` (git add . && git commit -m COMMIT_MESSAGE)
   1. `gpr` (git pull --rebase --prune)
   1. `gp` (git push origin master)
 
 - My typical development flow on a repo w/out PRs (on master) when a merge conflict occurs:
   1. `cd REPOSITORY`
   1. Make changes & test
+  1. `gc COMMIT_MESSAGE` (git add . && git commit -m COMMIT_MESSAGE)
   1. `gpr` (git pull --rebase --prune)
   1. Resolve merge conflict
   1. `grc` (git add . && git rebase --continue)
