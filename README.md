@@ -1,3 +1,5 @@
+# Aliases
+
 In ~/.zshrc:
 ```
 # Add your initials, used for branching naming, et al
@@ -16,6 +18,65 @@ function s() { echo "git status --short"; git status --short; }
 function gm() { echo "git pull --rebase --prune && git merge --squash --ff-only $INITIALS/$1"; git pull --rebase --prune && git merge --squash --ff-only $INITIALS/$1; }
 ```
 
+
+
+# GIT
+
+- Install Git via the Terminal/iTerm
+
+```
+brew install git
+git --version
+```
+
+
+
+# GITHUB
+
+- Create account @ github.com
+
+- Create public/private keys on laptop in Terminal/iTerm application
+```
+cd ~/.ssh
+ssh-keygen -t rsa -C "you-email-address@x.com" # save it to id_rsa (eg id_caden), passphrase is optional
+chmod 700 id_rsa
+```
+
+- Copy keys and add then to github settings
+```
+pbcopy < ~/.ssh/id_rsa.pub
+```
+  - https://github.com/settings/profile
+  - Select SSH and GPG keys
+  - Push New SSH Key
+    - Any Title is fine
+    - Paste what was pbcopied previously to the clipboard (Command-V)
+
+- Create config file ~/.ssh/config with
+```
+Host rsa
+    AddKeysToAgent yes
+    UseKeychain yes
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_rsa
+```
+
+- Update stored keys
+```
+ssh-add -D
+ssh-add id_rsa
+ssh-add -l
+```
+
+- Test keys
+```
+ssh -T rsa
+```
+
+
+
+# Process
 
 - My typical branch based development flow on a repo requiring PRs:
   1. `cd REPOSITORY`
